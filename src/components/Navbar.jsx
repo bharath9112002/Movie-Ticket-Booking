@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
@@ -20,8 +20,14 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
-      <div className="brand">
-        <span className="brand-mark">🎬</span> CineBook
+      <div className="nav-left">
+        <div className="brand">
+          <span className="brand-mark">🎬</span> CineBook
+        </div>
+        <nav className="nav-links" aria-label="Main">
+          <NavLink to="/" end>Dashboard</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
+        </nav>
       </div>
       <div className="nav-user">
         <span className="avatar" aria-hidden="true">{initials}</span>

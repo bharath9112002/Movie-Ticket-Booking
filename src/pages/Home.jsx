@@ -10,7 +10,7 @@ export default function Home() {
       <main className="home">
         <section className="welcome">
           <h1>Hello, {user.name.split(' ')[0]} 👋</h1>
-          <p>You&apos;re signed in. Movie listings and bookings will appear here.</p>
+          <p>Your account details.</p>
         </section>
         <section className="profile-card">
           <h2>Your profile</h2>
