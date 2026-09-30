@@ -28,6 +28,8 @@ export default function Navbar() {
           <NavLink to="/" end>Dashboard</NavLink>
           <NavLink to="/movies">Movies</NavLink>
           <NavLink to="/theatres">Theatres</NavLink>
+          <NavLink to="/book">Book tickets</NavLink>
+          <NavLink to="/bookings">My bookings</NavLink>
           <NavLink to="/profile">Profile</NavLink>
         </nav>
       </div>

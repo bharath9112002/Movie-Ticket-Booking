@@ -3,6 +3,7 @@
 // Show times are generated per theatre and date from a fixed seed, so they are stable
 // across reloads but always relative to today.
 
+import { getLocalBookedSeats } from '../utils/bookingStorage'
 import { popularMovies } from './mockMovieApi'
 import { MockApiError, paginate, respond, seededRandom } from './mockUtils'
 
@@ -166,7 +167,10 @@ function generateShows(theatre, dateKey) {
         const evening = h >= 18
         const demand = 0.25 + random() * 0.55 + (evening ? 0.15 : 0) + (weekend ? 0.15 : 0)
         const booked = Math.min(screen.seats, Math.round(screen.seats * demand))
-        const available = screen.seats - booked
+        const id = `${screen.id}-${dateKey}-${time}`
+        // `baseAvailable` is the generated figure; real bookings made in this browser come off it.
+        const baseAvailable = screen.seats - booked
+        const available = Math.max(0, baseAvailable - getLocalBookedSeats(id).size)
         const status =
           startsAt.getTime() < now ? 'past'
             : available === 0 ? 'sold_out'
@@ -174,7 +178,7 @@ function generateShows(theatre, dateKey) {
                 : 'available'
 
         shows.push({
-          id: `${screen.id}-${dateKey}-${time}`,
+          id,
           movieId: movie.id,
           time,
           startsAt: startsAt.toISOString(),
@@ -183,6 +187,7 @@ function generateShows(theatre, dateKey) {
           format: screen.type,
           price: screen.basePrice + (evening ? 30 : 0) + (weekend ? 20 : 0),
           totalSeats: screen.seats,
+          baseAvailable,
           availableSeats: available,
           status,
         })
@@ -335,13 +340,18 @@ function buildSeatMap(show) {
     })
   }
 
-  // Mark exactly (total - available) seats as booked, the same seats every time for this show.
+  // Mark the generated bookings (the same seats every time for this show), then the
+  // real ones made in this browser.
   const seats = rows.flatMap((row) => row.blocks.flat())
   const random = seededRandom(hashString(show.id))
   const order = seats.map((seat, i) => ({ i, key: random() })).sort((a, b) => a.key - b.key)
-  const bookedCount = show.totalSeats - show.availableSeats
+  const bookedCount = show.totalSeats - show.baseAvailable
   order.slice(0, bookedCount).forEach(({ i }) => {
     seats[i].status = 'booked'
+  })
+  const local = getLocalBookedSeats(show.id)
+  seats.forEach((seat) => {
+    if (local.has(seat.id)) seat.status = 'booked'
   })
 
   return { tiers, rows }
@@ -349,26 +359,95 @@ function buildSeatMap(show) {
 
 const SHOW_ID = /^(\d+)-s(\d+)-(\d{4}-\d{2}-\d{2})-(\d{2}:\d{2})$/
 
-/** One show with its theatre, movie and full seat map. */
-export const getShowSeats = (showId, { signal } = {}) =>
-  respond(() => {
-    const match = SHOW_ID.exec(showId)
-    const theatre = match && THEATRES.find((t) => t.id === Number(match[1]))
-    if (!theatre) throw new MockApiError('This show could not be found.', 404)
-    if (!upcomingDates().includes(match[3])) {
-      throw new MockApiError('Seat selection is only available for shows in the next 7 days.', 404)
-    }
-    const show = generateShows(theatre, match[3]).find((s) => s.id === showId)
-    if (!show) throw new MockApiError('This show could not be found.', 404)
+/** One show with its theatre, movie and full seat map (synchronous; throws MockApiError). */
+export function loadShowSeats(showId) {
+  const match = SHOW_ID.exec(showId)
+  const theatre = match && THEATRES.find((t) => t.id === Number(match[1]))
+  if (!theatre) throw new MockApiError('This show could not be found.', 404)
+  if (!upcomingDates().includes(match[3])) {
+    throw new MockApiError('Seat selection is only available for shows in the next 7 days.', 404)
+  }
+  const show = generateShows(theatre, match[3]).find((s) => s.id === showId)
+  if (!show) throw new MockApiError('This show could not be found.', 404)
 
-    const screen = theatre.screens.find((s) => s.id === show.screenId)
-    return {
-      show,
-      theatre: { id: theatre.id, name: theatre.name, address: theatre.address, city: theatre.city },
-      screen: { id: screen.id, name: screen.name, type: screen.type },
-      movie: NOW_SHOWING.find((m) => m.id === show.movieId),
-      seatMap: buildSeatMap(show),
+  const screen = theatre.screens.find((s) => s.id === show.screenId)
+  return {
+    show,
+    theatre: { id: theatre.id, name: theatre.name, address: theatre.address, city: theatre.city },
+    screen: { id: screen.id, name: screen.name, type: screen.type },
+    movie: NOW_SHOWING.find((m) => m.id === show.movieId),
+    seatMap: buildSeatMap(show),
+  }
+}
+
+export const getShowSeats = (showId, { signal } = {}) => respond(() => loadShowSeats(showId), signal)
+
+// ---------- Booking flow lookups ----------
+
+/** Resolves and cross-checks the wizard's current choices. */
+export const getBookingContext = ({ movie, theatre, show }, { signal } = {}) =>
+  respond(() => {
+    const m = movie ? NOW_SHOWING.find((x) => x.id === Number(movie)) : null
+    if (movie && !m) throw new MockApiError('This movie is not currently showing in any theatre.', 404)
+    const t = theatre ? THEATRES.find((x) => x.id === Number(theatre)) : null
+    if (theatre && !t) throw new MockApiError('This theatre could not be found.', 404)
+    let s = null
+    if (show) {
+      const data = loadShowSeats(show)
+      if ((m && data.show.movieId !== m.id) || (t && data.theatre.id !== t.id)) {
+        throw new MockApiError("That show doesn't match the movie and theatre you picked.", 400)
+      }
+      s = data.show
     }
+    return {
+      movie: m,
+      theatre: t && { id: t.id, name: t.name, address: t.address, city: t.city },
+      show: s,
+    }
+  }, signal)
+
+// Every show of one movie across all theatres and bookable dates.
+function showsOfMovie(movieId) {
+  const dates = upcomingDates()
+  return THEATRES.flatMap((theatre) =>
+    dates.flatMap((date) =>
+      generateShows(theatre, date)
+        .filter((s) => s.movieId === movieId && isBookable(s))
+        .map((s) => ({ ...s, theatreId: theatre.id })),
+    ),
+  )
+}
+
+/** Movies currently playing, with how many theatres and shows have seats. */
+export const getNowShowing = ({ signal } = {}) =>
+  respond(
+    () =>
+      NOW_SHOWING.map((movie) => {
+        const shows = showsOfMovie(movie.id)
+        return { ...movie, theatreCount: new Set(shows.map((s) => s.theatreId)).size, showCount: shows.length }
+      }).filter((m) => m.showCount > 0),
+    signal,
+  )
+
+/** Theatres screening a movie in the next few days, with show counts and the next show. */
+export const getTheatresForMovie = (movieId, { signal } = {}) =>
+  respond(() => {
+    const id = Number(movieId)
+    if (!NOW_SHOWING.some((m) => m.id === id)) throw new MockApiError('This movie is not playing in any theatre.', 404)
+    const shows = showsOfMovie(id)
+    return THEATRES.map((theatre) => {
+      const own = shows.filter((s) => s.theatreId === theatre.id)
+      if (!own.length) return null
+      const { screens: _screens, ...info } = theatre
+      return {
+        ...info,
+        showCount: own.length,
+        formats: [...new Set(own.map((s) => s.format))],
+        nextShow: own[0],
+      }
+    })
+      .filter(Boolean)
+      .sort((a, b) => a.city.localeCompare(b.city) || a.name.localeCompare(b.name))
   }, signal)
 
 export const mapEmbedUrl = ({ lat, lng }) => {

@@ -1,9 +1,10 @@
 .seat-page {
   --card-radius: 16px;
-  --seat: 30px;
-  --seat-gap: 6px;
+  --seat-min: 30px;
+  --seat-max: 46px;
+  --seat-gap: 8px;
 
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 24px 32px 56px;
   display: grid;
@@ -54,7 +55,7 @@
 
 .seat-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 24px;
   align-items: start;
 }
@@ -67,6 +68,13 @@
   border-radius: var(--card-radius);
   padding: 22px;
   min-width: 0;
+}
+
+/* The auditorium: dark stage lit from the screen at the bottom. */
+.seat-panel {
+  background:
+    radial-gradient(120% 60% at 50% 100%, rgba(229, 9, 20, 0.14), transparent 60%),
+    linear-gradient(180deg, #15151c, #111117);
 }
 
 .seat-panel-head {
@@ -91,11 +99,14 @@
 .seat-legend {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 6px 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 0.82rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
   color: var(--text);
 }
 
@@ -105,10 +116,23 @@
   gap: 8px;
 }
 
-.seat-legend .seat {
-  width: 18px;
-  height: 18px;
-  cursor: default;
+.legend-seat {
+  width: 16px;
+  height: 15px;
+  border-radius: 5px 5px 3px 3px;
+}
+
+.legend-seat.is-available {
+  border: 1.5px solid var(--text);
+}
+
+.legend-seat.is-selected {
+  background: linear-gradient(180deg, #ff3b45, var(--accent));
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.7);
+}
+
+.legend-seat.is-booked {
+  background: repeating-linear-gradient(135deg, #2a2a36 0 3px, #22222c 3px 6px);
 }
 
 .seat-alert {
@@ -122,59 +146,116 @@
 }
 
 .seat-map-scroll {
+  container-type: inline-size;
   overflow-x: auto;
-  padding-bottom: 6px;
+  /* Room above the top row for tooltips. */
+  padding: 26px 4px 6px;
+  margin-top: -20px;
   scrollbar-width: thin;
 }
 
 .seat-map {
+  /* Seats grow to fill the panel: width minus row labels and aisles, shared across the
+     widest row's seats (--cols), kept between --seat-min and --seat-max. */
+  --seat: clamp(
+    var(--seat-min),
+    calc((100cqi - 150px - (var(--cols, 18) - 1) * var(--seat-gap)) / var(--cols, 18)),
+    var(--seat-max)
+  );
   display: grid;
   justify-content: center;
-  gap: var(--seat-gap);
+  gap: 10px;
   width: max-content;
   min-width: 100%;
   padding: 4px 0;
 }
 
+/* ---------- Tier headers ---------- */
 .tier-label {
-  margin: 14px 0 6px;
-  padding-bottom: 6px;
-  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 8px;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
   color: var(--text-h);
-  text-align: center;
+}
+
+/* Fading rules either side of the tier name. */
+.tier-label::before,
+.tier-label::after {
+  content: '';
+  flex: 1;
+  max-width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--tier) 60%, transparent));
+}
+
+.tier-label::after {
+  background: linear-gradient(270deg, transparent, color-mix(in srgb, var(--tier) 60%, transparent));
 }
 
 .seat-row-wrap:first-child .tier-label {
   margin-top: 0;
 }
 
-.tier-label span {
-  color: var(--muted);
-  font-weight: 600;
+.tier-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 }
 
+.tier-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tier);
+  box-shadow: 0 0 8px var(--tier);
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.tier-name .tier-dot {
+  margin-right: 0;
+}
+
+.tier-price {
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  color: var(--tier);
+  background: color-mix(in srgb, var(--tier) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tier) 40%, transparent);
+}
+
+/* ---------- Rows & seats ---------- */
 .seat-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .row-label {
-  width: 16px;
-  text-align: center;
-  font-size: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .seat-blocks {
   display: flex;
   justify-content: center;
-  gap: 26px; /* aisles */
+  gap: 28px; /* aisles */
   flex: 1;
 }
 
@@ -183,93 +264,180 @@
   gap: var(--seat-gap);
 }
 
+/* Cinema-chair shape: rounded backrest, with the armrest drawn by ::after. */
 .seat {
+  position: relative;
   display: inline-grid;
   place-items: center;
   width: var(--seat);
-  height: var(--seat);
+  height: calc(var(--seat) - 3px);
+  margin-bottom: 4px;
   padding: 0;
-  border-radius: 7px 7px 4px 4px;
+  border-radius: 9px 9px 5px 5px;
   font: inherit;
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: calc(var(--seat) * 0.3);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.seat::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: -5px;
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.55;
 }
 
 .seat.is-available {
-  background: transparent;
-  border: 1.5px solid var(--success);
-  color: var(--success);
+  color: var(--tier);
+  background: color-mix(in srgb, var(--tier) 8%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--tier) 75%, transparent);
 }
 
 .seat.is-available:hover {
-  background: var(--success-soft);
-  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--tier) 22%, transparent);
+  border-color: var(--tier);
+  box-shadow: 0 0 12px -2px var(--tier);
+  transform: translateY(-3px);
 }
 
 .seat.is-selected {
-  background: var(--accent);
-  border: 1.5px solid var(--accent);
   color: #fff;
-  box-shadow: 0 4px 14px -4px rgba(229, 9, 20, 0.8);
+  background: linear-gradient(180deg, #ff3b45, var(--accent));
+  border: 1.5px solid #ff5a62;
+  box-shadow: 0 6px 16px -4px rgba(229, 9, 20, 0.9), 0 0 0 3px rgba(229, 9, 20, 0.18);
+  animation: seat-pop 0.28s cubic-bezier(0.2, 0.8, 0.3, 1.5);
+}
+
+.seat.is-selected::after {
+  opacity: 0.8;
 }
 
 .seat.is-selected:hover {
-  background: var(--accent-hover);
+  transform: translateY(-2px);
 }
 
 .seat.is-booked {
-  background: var(--surface-2);
-  border: 1.5px solid var(--surface-2);
   color: transparent;
+  background: repeating-linear-gradient(135deg, #2a2a36 0 3px, #22222c 3px 6px);
+  border: 1.5px solid #2a2a36;
   cursor: not-allowed;
+}
+
+.seat.is-booked::after {
+  background: #2a2a36;
+  opacity: 1;
 }
 
 .seat:focus-visible {
   outline: 2px solid var(--text-h);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
+@keyframes seat-pop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tooltip: seat id and price. */
+.seat:not(.is-booked)::before {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  z-index: 3;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-h);
+  background: #2a2a36;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  pointer-events: none;
+  transition: opacity 0.12s, transform 0.12s;
+}
+
+.seat:not(.is-booked):hover::before,
+.seat:not(.is-booked):focus-visible::before {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Screen ---------- */
 .screen-indicator {
+  position: relative;
   display: grid;
   justify-items: center;
-  gap: 8px;
-  margin-top: 28px;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+/* Projector light spilling from the screen up over the seats. */
+.screen-glow {
+  position: absolute;
+  bottom: 30px;
+  width: min(90%, 600px);
+  height: 110px;
+  background: radial-gradient(50% 100% at 50% 100%, rgba(229, 9, 20, 0.28), transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
 }
 
 .screen-curve {
-  width: min(80%, 520px);
-  height: 18px;
-  border-top: 4px solid rgba(229, 9, 20, 0.8);
+  position: relative;
+  width: min(80%, 540px);
+  height: 22px;
+  border-top: 5px solid #ff4d56;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow: 0 -10px 24px -8px rgba(229, 9, 20, 0.6);
+  filter: drop-shadow(0 -6px 12px rgba(229, 9, 20, 0.8));
 }
 
 .screen-text {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--muted);
+  letter-spacing: 3px;
+  color: var(--text);
 }
 
 .tier-prices {
   list-style: none;
-  margin: 20px 0 0;
+  margin: 22px 0 0;
   padding: 14px 0 0;
   border-top: 1px solid var(--border);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 24px;
+  gap: 10px 26px;
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--text);
+}
+
+.tier-prices li {
+  display: flex;
+  align-items: center;
 }
 
 .tier-prices strong {
   color: var(--text-h);
-  margin-left: 4px;
+  margin-left: 6px;
 }
 
 /* ---------- Summary ---------- */
@@ -416,8 +584,17 @@
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #fff;
-  background: var(--accent);
+  color: var(--text-h);
+  background: color-mix(in srgb, var(--tier, var(--accent)) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tier, var(--accent)) 55%, transparent);
+  animation: chip-in 0.2s ease-out;
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
 }
 
 .summary-totals {
@@ -511,6 +688,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .seat.is-selected,
+  .summary-seats li {
+    animation: none;
+  }
+
   .seat,
   .toast,
   .count-meter span {
@@ -523,13 +705,17 @@
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 960px) {
+/* Below 1440px the map takes the full width (bigger seats); the summary moves under it. */
+@media (max-width: 1439px) {
   .seat-layout {
     grid-template-columns: 1fr;
   }
 
   .booking-summary {
     position: static;
+    width: 100%;
+    max-width: 760px;
+    justify-self: center;
   }
 
   .mobile-bar {
@@ -554,9 +740,23 @@
     transform: none;
   }
 
-  .mobile-bar div {
+  .mobile-bar {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .mobile-bar-info {
     display: grid;
+    min-width: 0;
     font-size: 0.85rem;
+  }
+
+  .mobile-bar-seats {
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50vw;
   }
 
   .mobile-bar strong {
@@ -574,8 +774,8 @@
 
 @media (max-width: 560px) {
   .seat-page {
-    --seat: 26px;
-    --seat-gap: 4px;
+    --seat-min: 26px;
+    --seat-gap: 5px;
     padding: 18px 16px 96px;
   }
 

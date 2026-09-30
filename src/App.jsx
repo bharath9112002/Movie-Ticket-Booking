@@ -12,6 +12,9 @@ import MovieDetail from './pages/MovieDetail'
 import Theatres from './pages/Theatres'
 import TheatreDetail from './pages/TheatreDetail'
 import SeatSelection from './pages/SeatSelection'
+import BookTickets from './pages/BookTickets'
+import BookingConfirmation from './pages/BookingConfirmation'
+import MyBookings from './pages/MyBookings'
 import ComingSoon from './pages/ComingSoon'
 import NotFound from './pages/NotFound'
 import './App.css'
@@ -37,7 +40,9 @@ function App() {
             <Route path="/theatres/:id" element={<TheatreDetail />} />
             <Route path="/shows/:showId/seats" element={<SeatSelection />} />
             <Route path="/shows/*" element={<ComingSoon title="Shows" />} />
-            <Route path="/bookings/*" element={<ComingSoon title="Bookings" />} />
+            <Route path="/book" element={<BookTickets />} />
+            <Route path="/bookings" element={<MyBookings />} />
+            <Route path="/bookings/:bookingId" element={<BookingConfirmation />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

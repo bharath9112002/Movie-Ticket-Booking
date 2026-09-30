@@ -542,3 +542,24 @@ form {
     padding: 8px 12px;
   }
 }
+
+/* Six nav links don't fit small screens: let them scroll sideways. */
+@media (max-width: 900px) {
+  .nav-left {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .nav-links {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+  }
+
+  .nav-name {
+    display: none;
+  }
+}

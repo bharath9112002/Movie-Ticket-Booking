@@ -1,20 +1,33 @@
 import { formatCurrency } from '../../utils/format'
+import { tierColorMap } from '../../utils/seatTheme'
 
 const STATUS_TEXT = { available: 'available', booked: 'already booked', selected: 'selected' }
 
 export default function SeatMap({ rows, tiers, selectedIds, onToggle }) {
   const priceOf = Object.fromEntries(tiers.map((t) => [t.name, t.price]))
+  const colorOf = tierColorMap(tiers)
+  // Widest row, so seats can be sized to fill the panel (see --cols in SeatSelection.css).
+  const cols = Math.max(...rows.map((row) => row.blocks.reduce((n, block) => n + block.length, 0)))
 
   return (
     <div className="seat-map-scroll">
-      <div className="seat-map" role="group" aria-label="Seat layout. The screen is at the bottom.">
+      <div
+        className="seat-map"
+        role="group"
+        aria-label="Seat layout. The screen is at the bottom."
+        style={{ '--cols': cols }}
+      >
         {rows.map((row, r) => {
           const newTier = r === 0 || rows[r - 1].tier !== row.tier
           return (
-            <div key={row.label} className="seat-row-wrap">
+            <div key={row.label} className="seat-row-wrap" style={{ '--tier': colorOf[row.tier] }}>
               {newTier && (
                 <p className="tier-label">
-                  {row.tier} <span>· {formatCurrency(priceOf[row.tier])}</span>
+                  <span className="tier-name">
+                    <span className="tier-dot" aria-hidden="true" />
+                    {row.tier}
+                  </span>
+                  <span className="tier-price">{formatCurrency(priceOf[row.tier])}</span>
                 </p>
               )}
               <div className="seat-row">
@@ -33,10 +46,10 @@ export default function SeatMap({ rows, tiers, selectedIds, onToggle }) {
                               disabled={seat.status === 'booked'}
                               aria-pressed={status === 'selected'}
                               aria-label={`Row ${seat.row}, seat ${seat.number}, ${seat.tier} ${formatCurrency(seat.price)}, ${STATUS_TEXT[status]}`}
-                              title={`${seat.id} · ${seat.tier} · ${formatCurrency(seat.price)}`}
+                              data-tip={`${seat.id} · ${formatCurrency(seat.price)}`}
                               onClick={() => onToggle(seat)}
                             >
-                              {seat.number}
+                              <span className="seat-num">{seat.number}</span>
                             </button>
                           )
                         })}
@@ -53,8 +66,9 @@ export default function SeatMap({ rows, tiers, selectedIds, onToggle }) {
         })}
 
         <div className="screen-indicator" aria-hidden="true">
+          <span className="screen-glow" />
           <span className="screen-curve" />
-          <span className="screen-text">All eyes this way please</span>
+          <span className="screen-text">Screen this way</span>
         </div>
       </div>
     </div>

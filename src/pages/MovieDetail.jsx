@@ -11,7 +11,9 @@ import {
   getMovieDetails,
   languageName,
   profileUrl,
+  usingMockData,
 } from '../services/tmdb'
+import { bookingUrl } from '../utils/bookingFlow'
 import '../styles/listing.css'
 import './Movies.css'
 
@@ -172,7 +174,7 @@ export default function MovieDetail() {
                 <button type="button" className="btn btn-primary" onClick={() => setShowTrailer(true)}>
                   ▶ Watch trailer
                 </button>
-                <Link to="/bookings" className="btn btn-glass">🎟️ Book tickets</Link>
+                <Link to={usingMockData ? bookingUrl({ movie: String(movie.id) }) : '/book'} className="btn btn-glass">🎟️ Book tickets</Link>
               </div>
             </div>
           </div>

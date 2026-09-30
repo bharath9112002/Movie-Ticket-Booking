@@ -2,10 +2,12 @@ import { PosterImage } from '../movies/MovieCard'
 import { formatCurrency, formatShowTime } from '../../utils/format'
 import { languageName } from '../../services/tmdb'
 import { BOOKING_FEE_PER_TICKET, priceBreakdown } from '../../utils/pricing'
+import { tierColorMap } from '../../utils/seatTheme'
 
 export default function BookingSummary({ data, selectedSeats, maxSeats, onClear, onProceed }) {
   const { show, theatre, screen, movie, seatMap } = data
   const { groups, tickets, fee, total } = priceBreakdown(selectedSeats, seatMap.tiers)
+  const colorOf = tierColorMap(seatMap.tiers)
   const date = new Date(show.startsAt).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })
   const count = selectedSeats.length
 
@@ -45,9 +47,10 @@ export default function BookingSummary({ data, selectedSeats, maxSeats, onClear,
         <>
           <ul className="summary-groups">
             {groups.map((g) => (
-              <li key={g.tier}>
+              <li key={g.tier} style={{ '--tier': colorOf[g.tier] }}>
                 <div className="summary-line">
                   <span>
+                    <span className="tier-dot" aria-hidden="true" />
                     {g.tier} <span className="muted">× {g.seats.length} @ {formatCurrency(g.price)}</span>
                   </span>
                   <span>{formatCurrency(g.subtotal)}</span>
