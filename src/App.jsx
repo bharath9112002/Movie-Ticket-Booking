@@ -11,6 +11,7 @@ import Movies from './pages/Movies'
 import MovieDetail from './pages/MovieDetail'
 import Theatres from './pages/Theatres'
 import TheatreDetail from './pages/TheatreDetail'
+import SeatSelection from './pages/SeatSelection'
 import ComingSoon from './pages/ComingSoon'
 import NotFound from './pages/NotFound'
 import './App.css'
@@ -34,6 +35,7 @@ function App() {
             <Route path="/theatres" element={<Theatres />} />
             <Route path="/theatres/new" element={<ComingSoon title="Add theatre" />} />
             <Route path="/theatres/:id" element={<TheatreDetail />} />
+            <Route path="/shows/:showId/seats" element={<SeatSelection />} />
             <Route path="/shows/*" element={<ComingSoon title="Shows" />} />
             <Route path="/bookings/*" element={<ComingSoon title="Bookings" />} />
           </Route>

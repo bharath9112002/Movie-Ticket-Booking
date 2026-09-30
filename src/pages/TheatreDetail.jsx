@@ -35,7 +35,10 @@ export default function TheatreDetail() {
     return () => controller.abort()
   }, [id, requestKey])
 
-  useEffect(() => window.scrollTo(0, 0), [id])
+  // Braces matter: newer browsers return a Promise from scrollTo, which React would treat as a cleanup.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
 
   const goBack = () => (location.key !== 'default' ? navigate(-1) : navigate('/theatres'))
 

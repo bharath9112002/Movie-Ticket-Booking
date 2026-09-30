@@ -133,7 +133,7 @@ export default function ShowTimings({ theatreId, dates, selectedDate, onSelectDa
                       <li key={show.id}>
                         {bookable ? (
                           <Link
-                            to={`/bookings?show=${encodeURIComponent(show.id)}`}
+                            to={`/shows/${encodeURIComponent(show.id)}/seats`}
                             className={`time-slot is-${show.status}`}
                             title={detail}
                             aria-label={`${formatShowTime(show.time)}, ${detail}, ${STATUS_LABELS[show.status]}`}

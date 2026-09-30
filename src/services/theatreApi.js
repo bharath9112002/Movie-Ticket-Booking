@@ -256,6 +256,121 @@ export const getShowtimes = (id, dateKey, { signal } = {}) =>
     return [...groups.values()].sort((a, b) => b.movie.popularity - a.movie.popularity)
   }, signal)
 
+// ---------- Seat layouts ----------
+
+export const MAX_SEATS_PER_BOOKING = 10
+
+// Seat tiers per screen format, back rows first. `share` is the fraction of rows;
+// `delta` is added to the show's base price.
+const TIER_PLANS = {
+  Recliner: [{ name: 'Recliner', share: 1, delta: 0 }],
+  IMAX: [
+    { name: 'Premium', share: 0.35, delta: 80 },
+    { name: 'Standard', share: 0.65, delta: 0 },
+  ],
+  '4DX': [
+    { name: 'Motion Premium', share: 0.4, delta: 60 },
+    { name: 'Motion', share: 0.6, delta: 0 },
+  ],
+  default: [
+    { name: 'Royal Recliner', share: 0.15, delta: 150 },
+    { name: 'Prime', share: 0.5, delta: 0 },
+    { name: 'Classic', share: 0.35, delta: -40 },
+  ],
+}
+
+// Seats per row, split into blocks separated by aisles.
+function blockLayout(totalSeats, type) {
+  if (type === 'Recliner') return [4, 6, 4]
+  if (totalSeats > 250) return [5, 12, 5]
+  if (totalSeats > 150) return [4, 10, 4]
+  if (totalSeats > 100) return [3, 8, 3]
+  return [3, 6, 3]
+}
+
+const hashString = (s) => [...s].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 7)
+
+function buildSeatMap(show) {
+  const blocks = blockLayout(show.totalSeats, show.format)
+  const perRow = blocks.reduce((a, b) => a + b, 0)
+  const rowCount = Math.ceil(show.totalSeats / perRow)
+  const plan = TIER_PLANS[show.format] ?? TIER_PLANS.default
+
+  // Rows are labelled from the screen: A is the front row. Back (premium) rows come first here.
+  const tierForRow = []
+  plan.forEach((tier, i) => {
+    const count = i === plan.length - 1 ? rowCount - tierForRow.length : Math.max(1, Math.round(rowCount * tier.share))
+    for (let n = 0; n < count && tierForRow.length < rowCount; n++) tierForRow.push(tier)
+  })
+
+  const tiers = plan.map((t) => ({ name: t.name, price: Math.max(100, show.price + t.delta) }))
+  const priceOf = (tier) => tiers.find((t) => t.name === tier.name).price
+
+  const rows = []
+  let remaining = show.totalSeats
+  for (let r = 0; r < rowCount; r++) {
+    const label = String.fromCharCode(65 + (rowCount - 1 - r)) // back row gets the last letter
+    const tier = tierForRow[r]
+    const seatsInRow = Math.min(perRow, remaining)
+    remaining -= seatsInRow
+    // A short front row is centred: trim the outer blocks, or use only the centre block.
+    const trim = perRow - seatsInRow
+    const outer = Math.min(blocks[0], blocks[blocks.length - 1])
+    const rowBlocks =
+      trim <= outer * 2
+        ? blocks.map((size, b) =>
+            b === 0 ? size - Math.floor(trim / 2) : b === blocks.length - 1 ? size - Math.ceil(trim / 2) : size,
+          )
+        : blocks.map((_, b) => (b === 1 ? seatsInRow : 0))
+    let number = 0
+    rows.push({
+      label,
+      tier: tier.name,
+      blocks: rowBlocks.map((size) =>
+        Array.from({ length: Math.max(0, size) }, () => {
+          number += 1
+          return { id: `${label}${number}`, row: label, number, tier: tier.name, price: priceOf(tier), status: 'available' }
+        }),
+      ),
+    })
+  }
+
+  // Mark exactly (total - available) seats as booked, the same seats every time for this show.
+  const seats = rows.flatMap((row) => row.blocks.flat())
+  const random = seededRandom(hashString(show.id))
+  const order = seats.map((seat, i) => ({ i, key: random() })).sort((a, b) => a.key - b.key)
+  const bookedCount = show.totalSeats - show.availableSeats
+  order.slice(0, bookedCount).forEach(({ i }) => {
+    seats[i].status = 'booked'
+  })
+
+  return { tiers, rows }
+}
+
+const SHOW_ID = /^(\d+)-s(\d+)-(\d{4}-\d{2}-\d{2})-(\d{2}:\d{2})$/
+
+/** One show with its theatre, movie and full seat map. */
+export const getShowSeats = (showId, { signal } = {}) =>
+  respond(() => {
+    const match = SHOW_ID.exec(showId)
+    const theatre = match && THEATRES.find((t) => t.id === Number(match[1]))
+    if (!theatre) throw new MockApiError('This show could not be found.', 404)
+    if (!upcomingDates().includes(match[3])) {
+      throw new MockApiError('Seat selection is only available for shows in the next 7 days.', 404)
+    }
+    const show = generateShows(theatre, match[3]).find((s) => s.id === showId)
+    if (!show) throw new MockApiError('This show could not be found.', 404)
+
+    const screen = theatre.screens.find((s) => s.id === show.screenId)
+    return {
+      show,
+      theatre: { id: theatre.id, name: theatre.name, address: theatre.address, city: theatre.city },
+      screen: { id: screen.id, name: screen.name, type: screen.type },
+      movie: NOW_SHOWING.find((m) => m.id === show.movieId),
+      seatMap: buildSeatMap(show),
+    }
+  }, signal)
+
 export const mapEmbedUrl = ({ lat, lng }) => {
   const d = 0.01
   return `https://www.openstreetmap.org/export/embed.html?bbox=${lng - d},${lat - d * 0.6},${lng + d},${lat + d * 0.6}&layer=mapnik&marker=${lat},${lng}`
