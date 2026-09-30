@@ -20,3 +20,9 @@ export const formatDateTime = (date) =>
 
 export const formatDate = (date) =>
   date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+
+// '19:05' -> '7:05 PM'
+export const formatShowTime = (time) => {
+  const [h, m] = time.split(':').map(Number)
+  return `${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')} ${h >= 12 ? 'PM' : 'AM'}`
+}

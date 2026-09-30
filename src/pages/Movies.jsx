@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import MovieCard, { MovieCardSkeleton } from '../components/movies/MovieCard'
 import MovieFilters from '../components/movies/MovieFilters'
-import Pagination from '../components/movies/Pagination'
-import StatusMessage from '../components/movies/StatusMessage'
+import Pagination from '../components/common/Pagination'
+import StatusMessage from '../components/common/StatusMessage'
 import TrailerModal from '../components/movies/TrailerModal'
 import {
   MAX_PAGES,
@@ -15,6 +15,7 @@ import {
   searchSupportsFilters,
   usingMockData,
 } from '../services/tmdb'
+import '../styles/listing.css'
 import './Movies.css'
 
 const DEFAULT_SORT = SORT_OPTIONS[0].value
@@ -138,8 +139,8 @@ export default function Movies() {
   return (
     <>
       <Navbar />
-      <main className="movies-page">
-        <header className="movies-header">
+      <main className="list-page">
+        <header className="list-header">
           <div>
             <h1>Movies</h1>
             <p>{usingMockData ? 'Browse, search and filter our demo catalogue.' : 'Browse, search and filter thousands of titles from TMDB.'}</p>

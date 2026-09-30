@@ -27,6 +27,7 @@ export default function Navbar() {
         <nav className="nav-links" aria-label="Main">
           <NavLink to="/" end>Dashboard</NavLink>
           <NavLink to="/movies">Movies</NavLink>
+          <NavLink to="/theatres">Theatres</NavLink>
           <NavLink to="/profile">Profile</NavLink>
         </nav>
       </div>

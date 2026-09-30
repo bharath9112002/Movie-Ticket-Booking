@@ -1,54 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback } from 'react'
+import SearchBox from '../common/SearchBox'
 import { LANGUAGES, RATING_OPTIONS, SORT_OPTIONS, languageName } from '../../services/tmdb'
 
-const SEARCH_DELAY = 400
-
 export default function MovieFilters({ filters, genres, onChange, onReset }) {
-  const [query, setQuery] = useState(filters.q)
-  const lastSubmitted = useRef(filters.q)
-
-  const submit = useCallback(
-    (value) => {
-      lastSubmitted.current = value
-      onChange({ q: value })
-    },
-    [onChange],
-  )
-
-  // Keep the box in sync when the URL changes from elsewhere (back button, reset),
-  // without clobbering text typed after the last debounced submit.
-  useEffect(() => {
-    if (filters.q !== lastSubmitted.current) {
-      lastSubmitted.current = filters.q
-      setQuery(filters.q)
-    }
-  }, [filters.q])
-
-  // Debounce typing before it hits the API.
-  useEffect(() => {
-    const value = query.trim()
-    if (value === lastSubmitted.current) return
-    const timer = setTimeout(() => submit(value), SEARCH_DELAY)
-    return () => clearTimeout(timer)
-  }, [query, submit])
+  const onSearch = useCallback((q) => onChange({ q }), [onChange])
 
   const hasFilters = filters.q || filters.genre || filters.lang || filters.rating || filters.sort !== SORT_OPTIONS[0].value
 
   return (
-    <form className="movie-filters" role="search" onSubmit={(e) => {
-      e.preventDefault()
-      submit(query.trim())
-    }}>
-      <div className="search-box">
-        <span className="search-icon" aria-hidden="true">🔍</span>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search movies by title…"
-          aria-label="Search movies"
-        />
-      </div>
+    <div className="list-filters" role="search">
+      <SearchBox value={filters.q} onSearch={onSearch} placeholder="Search movies by title…" label="Search movies" />
 
       <div className="filter-row">
         <label className="select-field">
@@ -93,6 +54,6 @@ export default function MovieFilters({ filters, genres, onChange, onReset }) {
           Reset
         </button>
       </div>
-    </form>
+    </div>
   )
 }

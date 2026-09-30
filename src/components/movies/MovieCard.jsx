@@ -18,17 +18,25 @@ export function RatingBadge({ value }) {
   )
 }
 
-export function PosterImage({ path, title, size }) {
-  const [failed, setFailed] = useState(false)
-  const src = posterUrl(path, size)
-  if (!src || failed) {
+// Tries the poster, then `fallback` (e.g. generated artwork), then a placeholder.
+export function PosterImage({ path, fallback, title, size }) {
+  const [failed, setFailed] = useState([])
+  const src = [posterUrl(path, size), fallback].find((s) => s && !failed.includes(s))
+  if (!src) {
     return (
       <div className="poster-fallback" role="img" aria-label={`${title} poster unavailable`}>
         <span aria-hidden="true">🎬</span>
       </div>
     )
   }
-  return <img src={src} alt={`${title} poster`} loading="lazy" onError={() => setFailed(true)} />
+  return (
+    <img
+      src={src}
+      alt={`${title} poster`}
+      loading="lazy"
+      onError={() => setFailed((list) => [...list, src])}
+    />
+  )
 }
 
 export default function MovieCard({ movie, genreMap, onTrailer }) {
@@ -50,7 +58,7 @@ export default function MovieCard({ movie, genreMap, onTrailer }) {
   return (
     <article className="movie-card">
       <Link to={`/movies/${movie.id}`} className="movie-poster" tabIndex={-1} aria-hidden="true">
-        <PosterImage path={movie.poster_path} title={movie.title} />
+        <PosterImage path={movie.poster_path} fallback={movie.poster_fallback} title={movie.title} />
         <RatingBadge value={movie.vote_average} />
       </Link>
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { backdropUrl } from '../../services/tmdb'
+import { backdropLayers } from '../../services/tmdb'
 
 // UI-only trailer player: shows the frame and controls, no actual playback yet.
 export default function TrailerModal({ movie, onClose }) {
@@ -17,7 +17,7 @@ export default function TrailerModal({ movie, onClose }) {
     }
   }, [onClose])
 
-  const backdrop = backdropUrl(movie.backdrop_path, 'w780')
+  const backdrop = backdropLayers(movie, 'w780')
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -36,7 +36,7 @@ export default function TrailerModal({ movie, onClose }) {
         </header>
         <div
           className="trailer-screen"
-          style={backdrop ? { backgroundImage: `url(${backdrop})` } : undefined}
+          style={backdrop ? { backgroundImage: backdrop } : undefined}
         >
           <span className="trailer-play" aria-hidden="true">▶</span>
           <p>Trailer playback is coming soon.</p>

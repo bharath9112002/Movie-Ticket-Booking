@@ -1,0 +1,964 @@
+[
+  {
+    "id": 1001,
+    "title": "Jailer",
+    "genre_ids": [
+      28,
+      35,
+      53
+    ],
+    "original_language": "ta",
+    "runtime": 169,
+    "vote_average": 7,
+    "vote_count": 7719,
+    "release_date": "2023-08-10",
+    "popularity": 57.4,
+    "overview": "In Arakkonam, police discover a temple priest murdered and the temple idol has been stolen and replaced with a fake one. \"Tiger\" Muthuvel Pandian lives in Tamil Nadu with his family. Muthuvel's son, ACP Arjun, is investigating Varman, an eccentric gangster based in Arakkonam, who smuggles idols of gods and sells them to overseas buyers.",
+    "poster_file": "1001.jpg",
+    "directors": [
+      "Nelson Dilipkumar"
+    ],
+    "cast": [
+      "Rajinikanth",
+      "Ramya Krishnan",
+      "Jackie Shroff",
+      "Shiva Rajkumar",
+      "Tamannaah Bhatia",
+      "Vinayakan",
+      "Indukuri Sunil Varma",
+      "Vasanth Ravi"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jailer_(2023_Tamil_film)"
+  },
+  {
+    "id": 1002,
+    "title": "Leo",
+    "genre_ids": [
+      28,
+      53,
+      80
+    ],
+    "original_language": "ta",
+    "runtime": 164,
+    "vote_average": 7.2,
+    "vote_count": 6638,
+    "release_date": "2023-10-19",
+    "popularity": 59,
+    "overview": "Parthiban \"Parthi\" is an outwardly humble wildlife rescuer and café proprietor living with his wife Sathya, son Siddharth \"Siddhu\" and daughter Mathi \"Chintu\" in Theog, Himachal Pradesh. One day, his forest ranger friend Joshy Andrews seeks his help in taming a spotted hyena creating chaos; Parthi tames the hyena with the help of Siddhu and adopts it subsequently, but chooses to avoid media coverage.",
+    "poster_file": "1002.jpg",
+    "directors": [
+      "Lokesh Kanagaraj"
+    ],
+    "cast": [
+      "Trisha Krishnan",
+      "Sanjay Dutt",
+      "Gautham Vasudev Menon",
+      "Babu Antony",
+      "Mathew Thomas",
+      "Arjun Sarja",
+      "Priya Anand"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Leo_(2023_Indian_film)"
+  },
+  {
+    "id": 1003,
+    "title": "Vikram",
+    "genre_ids": [
+      28,
+      53
+    ],
+    "original_language": "ta",
+    "runtime": 174,
+    "vote_average": 8.3,
+    "vote_count": 5557,
+    "release_date": "2022-06-03",
+    "popularity": 33.2,
+    "overview": "Amar, the leader of a black ops squad, is called upon by Police Commissioner Jose to bring to justice a group of masked vigilantes responsible for the murder of Stephen Raj, ACP Prabhanjan and his foster father, Karnan. The gang killed Stephen after being arrested and subsequently released following his imprisonment for assisting criminals Adaikalam and Anbu.",
+    "poster_file": "1003.jpg",
+    "directors": [
+      "Lokesh Kanagaraj"
+    ],
+    "cast": [
+      "Kamal Haasan",
+      "Vijay Sethupathi",
+      "Fahadh Faasil",
+      "Kalidas Jayaram",
+      "Narain",
+      "Chemban Vinod Jose",
+      "Gayathrie",
+      "Santhana Bharathi"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vikram_(2022_film)"
+  },
+  {
+    "id": 1004,
+    "title": "Amaran",
+    "genre_ids": [
+      28,
+      18,
+      36
+    ],
+    "original_language": "ta",
+    "runtime": 169,
+    "vote_average": 8.2,
+    "vote_count": 4476,
+    "release_date": "2024-10-31",
+    "popularity": 72.2,
+    "overview": "Indhu Rebecca Varghese, the widow of Major Mukund Varadarajan, travels by plane to New Delhi to receive the Ashoka Chakra award on behalf of her husband. During the journey, she reminisces about her life with Mukund, and Mukund's military career. A young Mukund is deeply influenced by the Indian Armed Forces.",
+    "poster_file": "1004.jpg",
+    "directors": [
+      "Rajkumar Periasamy"
+    ],
+    "cast": [
+      "Sivakartikeyan",
+      "Sai Pallavi",
+      "Rahul Bose",
+      "Bhuvan Arora",
+      "Lallu",
+      "Shreekumar",
+      "Shyamaprasad",
+      "Shyam Mohan"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Amaran_(2024_film)"
+  },
+  {
+    "id": 1005,
+    "title": "Maharaja",
+    "genre_ids": [
+      53,
+      28,
+      18
+    ],
+    "original_language": "ta",
+    "runtime": 140,
+    "vote_average": 8.4,
+    "vote_count": 3395,
+    "release_date": "2024-06-12",
+    "popularity": 73.9,
+    "overview": "Maharaja is a reserved barber employed at Ramki Saloon in Chennai. While visiting a local residence with his family, a runaway truck crashes into the building, killing his wife. His infant daughter miraculously survives when a metal dustbin falls over her and shields her from the collapsing structure.",
+    "poster_file": "1005.jpg",
+    "directors": [
+      "Nithilan Saminathan"
+    ],
+    "cast": [
+      "Vijay Sethupathi",
+      "Anurag Kashyap",
+      "Mamta Mohandas",
+      "Natarajan Subramaniam",
+      "Abhirami",
+      "Divyabharathi",
+      "Singampuli",
+      "Aruldoss"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Maharaja_(2024_film)"
+  },
+  {
+    "id": 1006,
+    "title": "Jai Bhim",
+    "genre_ids": [
+      18,
+      80
+    ],
+    "original_language": "ta",
+    "runtime": 164,
+    "vote_average": 8.7,
+    "vote_count": 2314,
+    "release_date": "2021-11-02",
+    "popularity": 60.9,
+    "overview": "In 1993, Rajakannu and Sengeni, a couple from the marginalized Irula tribe, survive by catching rats and venomous snakes for affluent, upper-caste landowners. After Rajakannu is summoned to remove a snake from the residence of a local village leader, a massive jewelry theft is reported at the house, and immediate suspicion falls upon him.",
+    "poster_file": "1006.jpg",
+    "directors": [
+      "T. J. Gnanavel"
+    ],
+    "cast": [
+      "Suriya",
+      "Lijomol Jose",
+      "Manikandan",
+      "Rajisha Vijayan",
+      "Prakash Raj",
+      "Rao Ramesh"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jai_Bhim_(film)"
+  },
+  {
+    "id": 1007,
+    "title": "96",
+    "genre_ids": [
+      10749,
+      18
+    ],
+    "original_language": "ta",
+    "runtime": 158,
+    "vote_average": 8.5,
+    "vote_count": 1233,
+    "release_date": "2018-10-04",
+    "popularity": 34,
+    "overview": "Ramachandran \"Ram\" Krishnamoorthy, a professional travel photographer, visits his former high school in Thanjavur, where he is overcome by nostalgia. Shortly after, he is added to his class's WhatsApp group, leading to the organization of a school reunion in Chennai.",
+    "poster_file": "1007.jpg",
+    "directors": [
+      "C. Prem Kumar"
+    ],
+    "cast": [
+      "Vijay Sethupathi",
+      "Trisha Krishnan"
+    ],
+    "source": "https://en.wikipedia.org/wiki/'96_(film)"
+  },
+  {
+    "id": 1008,
+    "title": "Ponniyin Selvan: I",
+    "genre_ids": [
+      28,
+      12,
+      36
+    ],
+    "original_language": "ta",
+    "runtime": 167,
+    "vote_average": 7.5,
+    "vote_count": 9152,
+    "release_date": "2022-09-30",
+    "popularity": 30,
+    "overview": "In the 10th century, the Chola Empire enjoys unprecedented expansion under the ailing Emperor Sundara Chola. His eldest son, Crown Prince Aditha Karikalan, commands the northern front from Kanchi, while his younger son, Arulmozhi Varman, leads an imperial military expedition in Lanka.",
+    "poster_file": "1008.jpg",
+    "directors": [
+      "Mani Ratnam"
+    ],
+    "cast": [
+      "Karthik Siva kumar",
+      "Vikram",
+      "Ravi Mohan",
+      "Aishwarya Rai",
+      "Trisha Krishnan",
+      "Jayaram",
+      "Aishwarya Lekshmi",
+      "Sobhita Dhulipala"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ponniyin_Selvan%3A_I"
+  },
+  {
+    "id": 1009,
+    "title": "RRR",
+    "genre_ids": [
+      28,
+      18,
+      36
+    ],
+    "original_language": "te",
+    "runtime": 182,
+    "vote_average": 7.8,
+    "vote_count": 8071,
+    "release_date": "2022-03-24",
+    "popularity": 59.3,
+    "overview": "In 1920, in the British Raj, the tyrannical Governor Scott Buxton and his wife, Catherine, visit a forest in Adilabad, where they encounter Malli, a gifted young girl from the Gond tribe. Impressed by her artistic talent, Catherine abducts Malli and takes her to Delhi.",
+    "poster_file": "1009.jpg",
+    "directors": [
+      "S. S. Rajamouli"
+    ],
+    "cast": [
+      "N. T. Rama Rao Jr.",
+      "Ram Charan",
+      "Alia Bhatt",
+      "Nabin Luhagun",
+      "Ajay Devgn",
+      "Shriya Saran",
+      "Ray Stevenson",
+      "Alison Doody"
+    ],
+    "source": "https://en.wikipedia.org/wiki/RRR"
+  },
+  {
+    "id": 1010,
+    "title": "Pushpa 2: The Rule",
+    "genre_ids": [
+      28,
+      80,
+      18
+    ],
+    "original_language": "te",
+    "runtime": 200,
+    "vote_average": 6.3,
+    "vote_count": 6990,
+    "release_date": "2024-12-05",
+    "popularity": 55.4,
+    "overview": "A consignment of red sandalwood arrives at the Yokohama port in Japan, where workers find Pushpa hidden inside a container. He attacks them and demands payment for the load, but is shot and falls into the sea, triggering a flashback. After humiliating SP Bhanwar Singh Shekhawat IPS, Pushpa rises to become a respected smuggler, while Shekhawat goes into hiding.",
+    "poster_file": "1010.jpg",
+    "directors": [
+      "Sukumar"
+    ],
+    "cast": [
+      "Allu Arjun",
+      "Rashmika Mandanna",
+      "Fahadh Faasil",
+      "Jagapati Babu",
+      "Indukuri Sunil Varma",
+      "Rao Ramesh",
+      "Dhananjay",
+      "Brahmaji"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pushpa_2%3A_The_Rule"
+  },
+  {
+    "id": 1011,
+    "title": "Kalki 2898 AD",
+    "genre_ids": [
+      878,
+      28,
+      14
+    ],
+    "original_language": "te",
+    "runtime": 181,
+    "vote_average": 7,
+    "vote_count": 5909,
+    "release_date": "2024-06-27",
+    "popularity": 61.6,
+    "overview": "In the aftermath of the Kurukshetra War, Ashwatthama unleashes the Brahmastra to kill the unborn child of Uttarā and extinguish the Pandava lineage. As punishment, Krishna curses him with painful immortality and eternal suffering, condemning him to wander the Earth for six millennia until he can redeem himself by protecting the mother of Kalki, the prophesied final avatar of Vishnu.",
+    "poster_file": "1011.jpg",
+    "directors": [
+      "Nag Ashwin"
+    ],
+    "cast": [
+      "Amitabh Bachchan",
+      "Disha Patani",
+      "Deepika Padukone",
+      "Prabhas",
+      "Kamal Haasan",
+      "Brahmanandam",
+      "Rajendra Prasad",
+      "Shobana"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kalki_2898_AD"
+  },
+  {
+    "id": 1012,
+    "title": "Baahubali 2: The Conclusion",
+    "genre_ids": [
+      28,
+      12,
+      14
+    ],
+    "original_language": "te",
+    "runtime": 171,
+    "vote_average": 8.2,
+    "vote_count": 4828,
+    "release_date": "2017-04-27",
+    "popularity": 37.7,
+    "overview": "Kattappa continues his narration of the events leading to Amarendra Baahubali's assassination. Following the victory over the Kalakeyas, Rajmata Sivagami proclaims Amarendra the heir apparent to the throne of Mahishmati, while appointing her biological son, Bhallaladeva, as the kingdom's commander-in-chief.",
+    "poster_file": "1012.jpg",
+    "directors": [
+      "S. S. Rajamouli"
+    ],
+    "cast": [
+      "Prabhas",
+      "Anushka Shetty",
+      "Rana Daggubati",
+      "Tamannaah Bhatia",
+      "Nassar",
+      "Ramya Krishnan"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Baahubali_2%3A_The_Conclusion"
+  },
+  {
+    "id": 1013,
+    "title": "Jawan",
+    "genre_ids": [
+      28,
+      53
+    ],
+    "original_language": "hi",
+    "runtime": 169,
+    "vote_average": 7,
+    "vote_count": 3747,
+    "release_date": "2023-09-07",
+    "popularity": 57.4,
+    "overview": "In Northeast India, a man is thrown off a plane into a river. The man is found unconscious by a tribal group, whose leader takes him in and cares for him for several months. When the tribe is attacked, the man wakes up and saves them. He becomes the tribe's messiah but is revealed to have lost his memory.",
+    "poster_file": "1013.jpg",
+    "directors": [
+      "Atlee"
+    ],
+    "cast": [
+      "Shah Rukh Khan",
+      "Vijay Sethupathi",
+      "Nayanthara",
+      "Sanya Malhotra",
+      "Priyamani",
+      "Sunil Grover"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jawan_(film)"
+  },
+  {
+    "id": 1014,
+    "title": "Pathaan",
+    "genre_ids": [
+      28,
+      53
+    ],
+    "original_language": "hi",
+    "runtime": 146,
+    "vote_average": 5.9,
+    "vote_count": 2666,
+    "release_date": "2023-01-25",
+    "popularity": 48.4,
+    "overview": "In 2019, the Indian Government revokes Article 370 of the Indian Constitution, which grants special status for Jammu and Kashmir. The news impacts a cancer-ridden Pakistani Army officer, General Qadir, who decides to exact vengeance against India and signs a contract with a private terrorist organisation called Outfit X.",
+    "poster_file": "1014.jpg",
+    "directors": [
+      "Siddharth Anand"
+    ],
+    "cast": [
+      "Shah Rukh Khan",
+      "John Abraham",
+      "Deepika Padukone",
+      "Nabin Luhagun",
+      "Salman Khan",
+      "Ashutosh Rana",
+      "Dimple Kapadia"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pathaan_(film)"
+  },
+  {
+    "id": 1015,
+    "title": "Stree 2",
+    "genre_ids": [
+      27,
+      35
+    ],
+    "original_language": "hi",
+    "runtime": 143,
+    "vote_average": 7,
+    "vote_count": 1585,
+    "release_date": "2024-08-15",
+    "popularity": 61.6,
+    "overview": "After Stree ceases haunting Chanderi, a headless demon named Sarkata emerges and abducts an unaccompanied woman. A few years later, the townsfolk of Chanderi worship Stree and believe that the women whom Sarkata abducted over the past few years left their homes in search of better opportunities.",
+    "poster_file": "1015.jpg",
+    "directors": [
+      "Amar Kaushik"
+    ],
+    "cast": [
+      "Rajkummar Rao",
+      "Shraddha Kapoor",
+      "Pankaj Tripathi",
+      "Abhishek Banerjee",
+      "Aparshakti Khurana",
+      "Mushtaq Khan",
+      "Sunita Rajwar",
+      "Anya Singh"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Stree_2"
+  },
+  {
+    "id": 1016,
+    "title": "12th Fail",
+    "genre_ids": [
+      18
+    ],
+    "original_language": "hi",
+    "runtime": 146,
+    "vote_average": 8.8,
+    "vote_count": 9504,
+    "release_date": "2023-10-27",
+    "popularity": 72.2,
+    "overview": "Manoj Kumar Sharma, the son of a low-ranking clerk, grows up in a corrupt, dacoit-infested village in the Chambal region. His father, a man of rigid principles, is suspended from his job after hitting a corrupt superior officer. To survive academically, Manoj and his classmates rely heavily on school-sanctioned cheating to pass their exams.",
+    "poster_file": "1016.jpeg",
+    "directors": [
+      "Vidhu Vinod Chopra"
+    ],
+    "cast": [
+      "Vikrant Massey",
+      "Pallak Lalwani",
+      "Priyanshu Chatterjee",
+      "Harish Khanna",
+      "Medha Shankr",
+      "Anant V Joshi",
+      "Anshumaan Pushkar",
+      "Sarita Joshi"
+    ],
+    "source": "https://en.wikipedia.org/wiki/12th_Fail"
+  },
+  {
+    "id": 1017,
+    "title": "Sita Ramam",
+    "genre_ids": [
+      10749,
+      18,
+      36
+    ],
+    "original_language": "te",
+    "runtime": 163,
+    "vote_average": 8.5,
+    "vote_count": 8423,
+    "release_date": "2022-08-05",
+    "popularity": 64.6,
+    "overview": "In 1985, Afreen, a rebellious Pakistani student in London, is ordered to pay 10 lakh INR in compensation within a month for burning the car of an Indian philanthropist, Anand Mehta, or face prison. Refusing to apologize, she travels to Karachi to secure the funds from her estranged grandfather, Abu Tariq, a retired Pakistan Army Brigadier.",
+    "poster_file": "1017.jpg",
+    "directors": [
+      "Hanu Raghavapudi"
+    ],
+    "cast": [
+      "Dulquer Salmaan",
+      "Mrunal Thakur",
+      "Rashmika Mandanna",
+      "Sumanth",
+      "Tharun Bhascker Dhaassyam",
+      "Gautham Vasudev Menon",
+      "Vennela Kishore",
+      "Murali Sharma"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sita_Ramam"
+  },
+  {
+    "id": 1018,
+    "title": "3 Idiots",
+    "genre_ids": [
+      35,
+      18
+    ],
+    "original_language": "hi",
+    "runtime": 171,
+    "vote_average": 8.4,
+    "vote_count": 7342,
+    "release_date": "2009-12-25",
+    "popularity": 8.4,
+    "overview": "At the Imperial College of Engineering (ICE), Ranchoddas \"Rancho\" Shamaldas Chanchad arrives as an academically gifted student, challenging professors with his unconventional beliefs. He befriends fellow engineering students Farhan Qureshi and Raju Rastogi.",
+    "poster_file": "1018.jpg",
+    "directors": [
+      "Rajkumar Hirani"
+    ],
+    "cast": [
+      "Aamir Khan",
+      "R. Madhavan",
+      "Sharman Joshi",
+      "Kareena Kapoor",
+      "Boman Irani",
+      "Javed Jaffrey",
+      "Omi Vaidya",
+      "Mona Singh"
+    ],
+    "source": "https://en.wikipedia.org/wiki/3_Idiots"
+  },
+  {
+    "id": 1019,
+    "title": "Manjummel Boys",
+    "genre_ids": [
+      12,
+      53,
+      18
+    ],
+    "original_language": "ml",
+    "runtime": 135,
+    "vote_average": 8.2,
+    "vote_count": 6261,
+    "release_date": "2024-02-22",
+    "popularity": 72.2,
+    "overview": "In 2006, during the Onam vacation, a group of ten friends from an arts club in Kochi travel to Kodaikanal, Tamil Nadu, for a holiday. Before heading back, one of the friends, Sudhi, suggests visiting the Guna Caves, the filming location of the movie Gunaa.",
+    "poster_file": "1019.jpg",
+    "directors": [
+      "Chidambaram"
+    ],
+    "cast": [
+      "Soubin Shahir",
+      "Sreenath Bhasi",
+      "Balu Varghese",
+      "Ganapathi S Poduval",
+      "Jean Paul Lal",
+      "Deepak Parambol",
+      "Abhiram Radhakrishnan",
+      "Arun Kurian"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Manjummel_Boys"
+  },
+  {
+    "id": 1020,
+    "title": "Premalu",
+    "genre_ids": [
+      10749,
+      35
+    ],
+    "original_language": "ml",
+    "runtime": 156,
+    "vote_average": 7.8,
+    "vote_count": 5180,
+    "release_date": "2024-02-09",
+    "popularity": 68.6,
+    "overview": "On the final day of college in Salem, Sachin Santosh professes his feelings for his classmate Anjali, but she bluntly rejects his proposal. Sachin moves back to his hometown of Aluva, where he deals with his parents' soured relationship and plans to pursue higher education in the UK.",
+    "poster_file": "1020.jpg",
+    "directors": [
+      "Girish A.D"
+    ],
+    "cast": [
+      "Naslen K. Gafoor",
+      "Mamitha Baiju",
+      "Sangeeth Prathap",
+      "Akhila Bhargavan",
+      "Shyam Mohan",
+      "Althaf Salim"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Premalu"
+  },
+  {
+    "id": 1021,
+    "title": "Drishyam",
+    "genre_ids": [
+      80,
+      18,
+      53
+    ],
+    "original_language": "ml",
+    "runtime": 164,
+    "vote_average": 8.3,
+    "vote_count": 4099,
+    "release_date": "2013-12-19",
+    "popularity": 18.3,
+    "overview": "Georgekutty is an orphan and a fourth-grade dropout who operates a successful cable television service in the rural village of Rajakkad. He lives with his wife, Rani, and their two daughters, Anju and Anu. Aside from his dedication to farming, Georgekutty's primary obsession is watching films, a pastime that occupies most of his working hours in his office.",
+    "poster_file": "1021.jpg",
+    "directors": [
+      "Jeethu Joseph"
+    ],
+    "cast": [
+      "Meena",
+      "Ansiba Hassan",
+      "Esther Anil",
+      "Asha Sarath",
+      "Sidhique",
+      "Kalabhavan Shajohn",
+      "Neeraj Madhav"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Drishyam"
+  },
+  {
+    "id": 1022,
+    "title": "Kantara",
+    "genre_ids": [
+      28,
+      53,
+      14
+    ],
+    "original_language": "kn",
+    "runtime": 148,
+    "vote_average": 8.2,
+    "vote_count": 3018,
+    "release_date": "2022-09-30",
+    "popularity": 32.8,
+    "overview": "In 1847, a king in coastal Karnataka, despite living with his devoted wife and children, finds himself spiritually unfulfilled. Seeking inner peace, he embarks on a journey to self-discovery and encounters a sacred stone in a forest, inhabited by the demigod Panjurli, guardian of the local villagers.",
+    "poster_file": "1022.jpeg",
+    "directors": [
+      "Rishab Shetty"
+    ],
+    "cast": [
+      "Rishab Shetty",
+      "Achyuth",
+      "Saptami Gowda",
+      "Kishore Kumar",
+      "Achyuth Kumar",
+      "Pramod Shetty",
+      "Prakash Thuminad",
+      "Naveen D Padil"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kantara_(2022_film)"
+  },
+  {
+    "id": 1023,
+    "title": "KGF: Chapter 2",
+    "genre_ids": [
+      28,
+      80,
+      18
+    ],
+    "original_language": "kn",
+    "runtime": 168,
+    "vote_average": 8.2,
+    "vote_count": 1937,
+    "release_date": "2022-04-14",
+    "popularity": 62.3,
+    "overview": ", Anand Ingalagi suffers a stroke, prompting his son Vijayendra Ingalagi to continue narrating the story. ) in Karnataka. To secure the loyalty of Guru Pandian, Andrews, Kamal, and Rajendra Desai, he keeps Reena, his love interest and Desai's daughter, hostage.",
+    "poster_file": "1023.jpg",
+    "directors": [
+      "Prashanth Neel"
+    ],
+    "cast": [
+      "Yash",
+      "Prakash Raj",
+      "Sanjay Dutt",
+      "Srinidhi Shetty",
+      "Raveena Tandon",
+      "Achyuth Kumar",
+      "Vasishta N. Simha",
+      "Rao Ramesh"
+    ],
+    "source": "https://en.wikipedia.org/wiki/KGF%3A_Chapter_2"
+  },
+  {
+    "id": 1024,
+    "title": "Oppenheimer",
+    "genre_ids": [
+      18,
+      36
+    ],
+    "original_language": "en",
+    "runtime": 180,
+    "vote_average": 8.3,
+    "vote_count": 856,
+    "release_date": "2023-07-11",
+    "popularity": 68.1,
+    "overview": "In the 1930s, J. Robert Oppenheimer teaches at the California Institute of Technology and the University of California, Berkeley after studying theoretical physics in Europe. A number of Berkeley academics are also Communist Party members, but Oppenheimer does not join himself.",
+    "poster_file": "1024.jpg",
+    "directors": [
+      "Christopher Nolan"
+    ],
+    "cast": [
+      "Cillian Murphy",
+      "Matt Damon",
+      "Emily Blunt",
+      "Florence Pugh",
+      "Rami Malek",
+      "Benny Safdie",
+      "Josh Hartnett"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Oppenheimer_(film)"
+  },
+  {
+    "id": 1025,
+    "title": "Dune: Part Two",
+    "genre_ids": [
+      878,
+      12
+    ],
+    "original_language": "en",
+    "runtime": 165,
+    "vote_average": 8.5,
+    "vote_count": 8775,
+    "release_date": "2024-02-06",
+    "popularity": 74.8,
+    "overview": "Following the defeat of House Atreides by House Harkonnen, Princess Irulan—daughter of the Padishah Emperor, Shaddam Corrino IV—records in her journal her father's betrayal of the Atreides. On the planet Arrakis, a Fremen tribe led by Stilgar accompanies Paul Atreides and his pregnant Bene Gesserit mother Lady Jessica to Sietch Tabr.",
+    "poster_file": "1025.jpeg",
+    "directors": [
+      "Denis Villeneuve"
+    ],
+    "cast": [
+      "Timothée Chalamet",
+      "Rebecca Ferguson",
+      "Javier Bardem",
+      "Stellan Skarsgård",
+      "Florence Pugh",
+      "Christopher Walken",
+      "Josh Brolin"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Dune%3A_Part_Two"
+  },
+  {
+    "id": 1026,
+    "title": "Interstellar",
+    "genre_ids": [
+      878,
+      12,
+      18
+    ],
+    "original_language": "en",
+    "runtime": 169,
+    "vote_average": 8.7,
+    "vote_count": 7694,
+    "release_date": "2014-10-26",
+    "popularity": 24.4,
+    "overview": "In the near future, humanity faces extinction due to dust storms and widespread crop blights. Cooper, a widowed former NASA test pilot, works as a farmer and raises his children, Murph and Tom, with his father-in-law Donald. Following a dust storm, Cooper and Murph discover that dust patterns in Murph's room, which she had attributed to a ghost, result from a gravitational anomaly.",
+    "poster_file": "1026.jpg",
+    "directors": [
+      "Christopher Nolan"
+    ],
+    "cast": [
+      "Matthew McConaughey",
+      "Jessica Chastain",
+      "Michael Caine",
+      "Bill Irwin",
+      "Ellen Burstyn",
+      "Wes Bentley",
+      "Matt Damon"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Interstellar_(film)"
+  },
+  {
+    "id": 1027,
+    "title": "Inception",
+    "genre_ids": [
+      878,
+      28,
+      12
+    ],
+    "original_language": "en",
+    "runtime": 148,
+    "vote_average": 8.8,
+    "vote_count": 6613,
+    "release_date": "2010-07-08",
+    "popularity": 8.8,
+    "overview": "Dom Cobb and Arthur are professional thieves who perform corporate espionage using experimental dream-sharing technology to infiltrate their targets' subconscious and extract information. Their latest target Saito is impressed with Cobb's ability to layer multiple dreams within each other.",
+    "poster_file": "1027.jpg",
+    "directors": [
+      "Christopher Nolan"
+    ],
+    "cast": [
+      "Leonardo DiCaprio",
+      "Ken Watanabe",
+      "Joseph Gordon-Levitt",
+      "Marion Cotillard",
+      "Elliot Page",
+      "Tom Hardy",
+      "Cillian Murphy",
+      "Tom Berenger"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Inception"
+  },
+  {
+    "id": 1028,
+    "title": "Spider-Man: Across the Spider-Verse",
+    "genre_ids": [
+      16,
+      28,
+      12
+    ],
+    "original_language": "en",
+    "runtime": 140,
+    "vote_average": 8.5,
+    "vote_count": 5532,
+    "release_date": "2023-05-30",
+    "popularity": 69.7,
+    "overview": "On Earth-65, Spider-Woman Gwen Stacy has become increasingly isolated from her friends and estranged from her father George Stacy. George is hunting Spider-Woman for killing Peter Parker, unaware that it was an accident after Peter turned into the Lizard.",
+    "poster_file": "1028.jpg",
+    "directors": [
+      "Joaquim Dos Santos",
+      "Kemp Powers",
+      "Justin K. Thompson"
+    ],
+    "cast": [
+      "Shameik Moore",
+      "Jake Johnson",
+      "Hailee Steinfeld",
+      "Oscar Isaac",
+      "Issa Rae",
+      "Brian Tyree Henry",
+      "Lauren Vélez",
+      "Jason Schwartzman"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Spider-Man%3A_Across_the_Spider-Verse"
+  },
+  {
+    "id": 1029,
+    "title": "Inside Out 2",
+    "genre_ids": [
+      16,
+      10751,
+      35
+    ],
+    "original_language": "en",
+    "runtime": 96,
+    "vote_average": 7.6,
+    "vote_count": 4451,
+    "release_date": "2024-06-10",
+    "popularity": 66.9,
+    "overview": "Two years after her move to San Francisco, 13-year-old Riley Andersen is entering high school. Her personified emotions—Joy, Sadness, Fear, Disgust, and Anger—now oversee a newly formed element of Riley's mind called her \"Sense of Self\", which houses memories and feelings that shape Riley's beliefs.",
+    "poster_file": "1029.jpg",
+    "directors": [
+      "Kelsey Mann"
+    ],
+    "cast": [
+      "Amy Poehler",
+      "Phyllis Smith",
+      "Lewis Black",
+      "Tony Hale",
+      "Liza Lapira",
+      "Maya Hawke",
+      "Ayo Edebiri",
+      "Lilimar Hernández"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Inside_Out_2"
+  },
+  {
+    "id": 1030,
+    "title": "Parasite",
+    "genre_ids": [
+      53,
+      18,
+      35
+    ],
+    "original_language": "ko",
+    "runtime": 132,
+    "vote_average": 8.5,
+    "vote_count": 3370,
+    "release_date": "2019-05-21",
+    "popularity": 49.3,
+    "overview": "Kim Ki-taek and Chung-sook live in a semi-basement flat (banjiha) in Seoul with their daughter Ki-jung and son Ki-woo. As the family has financial struggles and low-income jobs, family friend Min-hyuk gives them a scholar's rock meant to promise wealth.",
+    "poster_file": "1030.png",
+    "directors": [
+      "Bong Joon-ho"
+    ],
+    "cast": [
+      "Song Kang-ho",
+      "Lee Sun-kyun",
+      "Cho Yeo-jeong",
+      "Jang Hye-jin",
+      "Choi Woo-shik",
+      "Park So-dam",
+      "Jung Ziso",
+      "Lee Jung-eun"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Parasite_(2019_film)"
+  },
+  {
+    "id": 1031,
+    "title": "Your Name",
+    "genre_ids": [
+      16,
+      10749,
+      14
+    ],
+    "original_language": "ja",
+    "runtime": 107,
+    "vote_average": 8.4,
+    "vote_count": 2289,
+    "release_date": "2016-07-03",
+    "popularity": 33.6,
+    "overview": "Mitsuha Miyamizu is a high school student in Itomori, a rural town in Gifu. Bored with her provincial life, she wishes to be reborn as a boy in Tokyo. Soon, she begins intermittently switching bodies with Taki Tachibana, a high school student and part-time waiter from Tokyo's Shinjuku ward.",
+    "poster_file": "1031.png",
+    "directors": [
+      "Makoto Shinkai"
+    ],
+    "cast": [
+      "Mone Kamishiraishi",
+      "Ryūnosuke Kamiki",
+      "Alice Orsat",
+      "Ryō Narita",
+      "Aoi Yūki",
+      "Nobunaga Shimazaki",
+      "Kaito Ishikawa",
+      "Masami Nagasawa"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Your_Name"
+  },
+  {
+    "id": 1032,
+    "title": "Spirited Away",
+    "genre_ids": [
+      16,
+      14,
+      10751
+    ],
+    "original_language": "ja",
+    "runtime": 124,
+    "vote_average": 8.6,
+    "vote_count": 1208,
+    "release_date": "2001-07-20",
+    "popularity": 8.6,
+    "overview": "Ten-year-old Chihiro Ogino and her parents are traveling to their new home in the countryside. They drive down an unexpected road and arrive in front of a tunnel leading to what appears to be an abandoned resort town, which her parents insist on exploring over Chihiro's protests.",
+    "poster_file": "1032.png",
+    "directors": [
+      "Hayao Miyazaki"
+    ],
+    "cast": [
+      "Ryūnosuke Kamiki",
+      "Yō Ōizumi",
+      "Yasuko Sawaguchi",
+      "Bunta Sugawara",
+      "Rumi Hiiragi",
+      "Miyu Irino",
+      "Mari Natsuki",
+      "Takashi Naitō"
+    ],
+    "source": "https://en.wikipedia.org/wiki/Spirited_Away"
+  }
+]

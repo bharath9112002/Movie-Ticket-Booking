@@ -2,16 +2,17 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { PosterImage, RatingBadge } from '../components/movies/MovieCard'
-import StatusMessage from '../components/movies/StatusMessage'
+import StatusMessage from '../components/common/StatusMessage'
 import TrailerModal from '../components/movies/TrailerModal'
 import {
-  backdropUrl,
+  backdropLayers,
   formatReleaseDate,
   formatRuntime,
   getMovieDetails,
   languageName,
   profileUrl,
 } from '../services/tmdb'
+import '../styles/listing.css'
 import './Movies.css'
 
 const CAST_LIMIT = 12
@@ -106,7 +107,7 @@ export default function MovieDetail() {
   const cert = certification(movie)
   const directors = movie.credits?.crew.filter((c) => c.job === 'Director').map((c) => c.name) ?? []
   const cast = movie.credits?.cast.slice(0, CAST_LIMIT) ?? []
-  const backdrop = backdropUrl(movie.backdrop_path)
+  const backdrop = backdropLayers(movie)
 
   return (
     <>
@@ -114,11 +115,11 @@ export default function MovieDetail() {
       <main className="detail-page">
         <section
           className="detail-hero"
-          style={backdrop ? { '--backdrop': `url(${backdrop})` } : undefined}
+          style={backdrop ? { '--backdrop': backdrop } : undefined}
         >
           <div className="detail-inner">
             <div className="detail-poster">
-              <PosterImage path={movie.poster_path} title={movie.title} size="w500" />
+              <PosterImage path={movie.poster_path} fallback={movie.poster_fallback} title={movie.title} size="w500" />
             </div>
 
             <div className="detail-info">
@@ -189,7 +190,7 @@ export default function MovieDetail() {
                     <span className="cast-fallback" aria-hidden="true">👤</span>
                   )}
                   <p className="cast-name">{person.name}</p>
-                  <p className="cast-role">{person.character}</p>
+                  {person.character && <p className="cast-role">{person.character}</p>}
                 </li>
               ))}
             </ul>

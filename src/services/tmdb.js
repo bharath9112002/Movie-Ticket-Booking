@@ -169,15 +169,26 @@ export function getRuntime(id) {
   return runtimeCache.get(id)
 }
 
-// TMDB returns relative image paths; the mock returns complete (data:) URLs.
+// TMDB returns bare file paths like "/abc.jpg"; the mock returns ready-to-use URLs
+// (data: URIs, or files under public/demo/).
+const MOCK_ASSET_PREFIX = `${import.meta.env.BASE_URL}demo/`
 const imageUrl = (path, size) => {
   if (!path) return null
-  return /^(data:|https?:)/.test(path) ? path : `${IMAGE_BASE}/${size}${path}`
+  if (/^(data:|https?:)/.test(path) || path.startsWith(MOCK_ASSET_PREFIX)) return path
+  return `${IMAGE_BASE}/${size}${path}`
 }
 
 export const posterUrl = (path, size = 'w342') => imageUrl(path, size)
 export const backdropUrl = (path, size = 'w1280') => imageUrl(path, size)
 export const profileUrl = (path, size = 'w185') => imageUrl(path, size)
+
+// CSS background-image value: the backdrop, layered over the mock's generated
+// fallback (if any) so something still shows when the photo can't load.
+export const backdropLayers = (movie, size) =>
+  [backdropUrl(movie.backdrop_path, size), movie.backdrop_fallback]
+    .filter(Boolean)
+    .map((url) => `url("${url}")`)
+    .join(', ') || null
 
 export const formatRuntime = (minutes) => {
   if (!minutes) return '—'
