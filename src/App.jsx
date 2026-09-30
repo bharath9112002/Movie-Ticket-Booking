@@ -7,6 +7,8 @@ import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
+import Movies from './pages/Movies'
+import MovieDetail from './pages/MovieDetail'
 import ComingSoon from './pages/ComingSoon'
 import NotFound from './pages/NotFound'
 import './App.css'
@@ -24,7 +26,9 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/profile" element={<Home />} />
-            <Route path="/movies/*" element={<ComingSoon title="Movies" />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/new" element={<ComingSoon title="Add movie" />} />
+            <Route path="/movies/:id" element={<MovieDetail />} />
             <Route path="/theatres/*" element={<ComingSoon title="Theatres" />} />
             <Route path="/shows/*" element={<ComingSoon title="Shows" />} />
             <Route path="/bookings/*" element={<ComingSoon title="Bookings" />} />

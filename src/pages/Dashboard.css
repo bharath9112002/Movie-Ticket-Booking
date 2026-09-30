@@ -153,17 +153,6 @@
   box-shadow: 0 8px 24px -8px rgba(229, 9, 20, 0.8);
 }
 
-.btn-glass {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: var(--text-h);
-  backdrop-filter: blur(6px);
-}
-
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-
 .hero-highlight {
   position: relative;
   flex-shrink: 0;
