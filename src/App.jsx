@@ -15,6 +15,7 @@ import SeatSelection from './pages/SeatSelection'
 import BookTickets from './pages/BookTickets'
 import BookingConfirmation from './pages/BookingConfirmation'
 import MyBookings from './pages/MyBookings'
+import Reports from './pages/Reports'
 import ComingSoon from './pages/ComingSoon'
 import NotFound from './pages/NotFound'
 import './App.css'
@@ -43,6 +44,7 @@ function App() {
             <Route path="/book" element={<BookTickets />} />
             <Route path="/bookings" element={<MyBookings />} />
             <Route path="/bookings/:bookingId" element={<BookingConfirmation />} />
+            <Route path="/reports" element={<Reports />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

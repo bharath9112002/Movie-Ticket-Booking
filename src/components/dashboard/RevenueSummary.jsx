@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatCurrency } from '../../utils/format'
 
 // `days` is an oldest-first list of { date, revenue } for the chart.
@@ -8,7 +9,7 @@ export default function RevenueSummary({ days, totals }) {
     <section className="panel revenue fade-up" style={{ '--i': 8 }}>
       <header className="panel-head">
         <h2>Revenue summary</h2>
-        <span className="panel-tag">Dummy data</span>
+        <Link to="/reports" className="link-sm">Full report →</Link>
       </header>
 
       <dl className="revenue-totals">

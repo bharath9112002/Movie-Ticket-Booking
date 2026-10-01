@@ -30,6 +30,7 @@ export default function Navbar() {
           <NavLink to="/theatres">Theatres</NavLink>
           <NavLink to="/book">Book tickets</NavLink>
           <NavLink to="/bookings">My bookings</NavLink>
+          <NavLink to="/reports">Reports</NavLink>
           <NavLink to="/profile">Profile</NavLink>
         </nav>
       </div>
