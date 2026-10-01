@@ -11,11 +11,11 @@ export class MockApiError extends Error {
 const LATENCY_MS = [350, 800]
 
 // Resolve after a realistic delay, honouring AbortController like fetch does.
-export function respond(producer, signal) {
+export function respond(producer, signal, latency = LATENCY_MS) {
   return new Promise((resolve, reject) => {
     const abortError = () => new DOMException('The operation was aborted.', 'AbortError')
     if (signal?.aborted) return reject(abortError())
-    const [min, max] = LATENCY_MS
+    const [min, max] = latency
     const timer = setTimeout(() => {
       try {
         resolve(structuredClone(producer()))

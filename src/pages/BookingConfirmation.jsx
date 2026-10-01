@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Barcode from '../components/booking/Barcode'
 import StepError from '../components/booking/StepError'
+import DownloadTicketButton from '../components/booking/DownloadTicketButton'
 import { PosterImage } from '../components/movies/MovieCard'
 import { useAuth } from '../context/AuthContext'
 import useAsync from '../hooks/useAsync'
@@ -128,6 +129,13 @@ export default function BookingConfirmation() {
                 <dd>{formatCurrency(b.total)}</dd>
               </div>
             </dl>
+            {b.payment && (
+              <p className="stub-booked">
+                Paid via {b.payment.label}
+                <br />
+                Txn {b.payment.transactionId}
+              </p>
+            )}
             <p className="stub-booked">
               Booked {new Date(b.createdAt).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })}
             </p>
@@ -135,7 +143,8 @@ export default function BookingConfirmation() {
         </article>
 
         <div className="ticket-actions no-print">
-          <button type="button" className="btn btn-primary" onClick={() => window.print()}>
+          <DownloadTicketButton bookingId={b.id} />
+          <button type="button" className="btn btn-outline" onClick={() => window.print()}>
             🖨️ Print ticket
           </button>
           <Link to="/bookings" className="btn btn-outline">My bookings</Link>

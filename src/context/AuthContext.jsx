@@ -8,13 +8,11 @@ import {
 } from '../utils/storage'
 
 const AuthContext = createContext(null)
-
-// Never keep the password in the session object.
 const toSessionUser = ({ password: _password, ...user }) => user
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    saveUsers(getUsers()) // persist the demo account on first load
+    saveUsers(getUsers()) 
     return getCurrentUser()
   })
 

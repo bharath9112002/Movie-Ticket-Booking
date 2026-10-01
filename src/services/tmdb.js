@@ -1,9 +1,3 @@
-// Thin client for The Movie Database (TMDB) v3 API.
-// Configure ONE of these in `.env.local` (see `.env.example`):
-//   VITE_TMDB_ACCESS_TOKEN — "API Read Access Token" (preferred)
-//   VITE_TMDB_API_KEY      — "API Key" (v3)
-// With neither set, every call is served by the offline mock in mockMovieApi.js.
-
 import * as mock from './mockMovieApi'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
@@ -12,7 +6,6 @@ const IMAGE_BASE = 'https://image.tmdb.org/t/p'
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 
-// TMDB never serves more than 500 pages for list endpoints.
 export const MAX_PAGES = 500
 
 export const isConfigured = Boolean(ACCESS_TOKEN || API_KEY)
@@ -67,7 +60,6 @@ async function request(path, params = {}, { signal } = {}) {
   return response.json()
 }
 
-// Genres rarely change, so fetch them once per session.
 let genresPromise
 export function getGenres() {
   genresPromise ??= (

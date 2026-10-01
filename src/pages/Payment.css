@@ -1,0 +1,715 @@
+/* ---------- Payment step layout ---------- */
+.pay-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+.pay-panel,
+.order-summary,
+.pay-result {
+  padding: 24px;
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+
+.pay-body {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------- Method tabs ---------- */
+.pay-methods {
+  display: grid;
+  gap: 8px;
+}
+
+.pay-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.pay-method:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+.pay-method:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pay-method[aria-selected='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text-h);
+}
+
+.pay-method:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pay-method-icon {
+  font-size: 1.3rem;
+}
+
+.pay-method-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pay-method-label {
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.pay-method-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ---------- Form ---------- */
+.pay-form {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.pay-fields {
+  display: grid;
+  gap: 14px;
+}
+
+.pay-fields-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pay-help,
+.pay-secure {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.pay-secure {
+  text-align: center;
+}
+
+.pay-submit {
+  font-size: 1.05rem;
+  padding: 13px 20px;
+}
+
+.pay-legend {
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+/* ---------- Card ---------- */
+.card-form {
+  display: grid;
+  gap: 18px;
+}
+
+.card-preview {
+  --card-a: #3a3a4d;
+  --card-b: #1c1c26;
+
+  display: grid;
+  gap: 18px;
+  width: min(340px, 100%);
+  aspect-ratio: 1.586;
+  padding: 20px 22px;
+  border-radius: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--card-a), var(--card-b));
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.9);
+  align-content: space-between;
+  transition: background 0.3s;
+}
+
+.card-preview.is-visa {
+  --card-a: #1a3fa8;
+  --card-b: #0b1f5c;
+}
+
+.card-preview.is-mastercard {
+  --card-a: #3b3b3b;
+  --card-b: #c2410c;
+}
+
+.card-preview.is-rupay {
+  --card-a: #0f766e;
+  --card-b: #134e4a;
+}
+
+.card-preview.is-amex {
+  --card-a: #2b8fbf;
+  --card-b: #12506d;
+}
+
+.card-preview-top,
+.card-preview-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-chip {
+  width: 38px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f5d27a, #b8913a);
+}
+
+.card-brand {
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.card-preview-number {
+  margin: 0;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: clamp(1rem, 4.5vw, 1.25rem);
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+
+.card-preview-bottom > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.card-preview-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.7;
+}
+
+.card-preview-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-badge {
+  flex-shrink: 0;
+  margin-right: 10px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-h);
+  background: var(--surface-2);
+}
+
+/* ---------- UPI ---------- */
+.upi-form {
+  display: grid;
+  gap: 16px;
+}
+
+.segmented {
+  display: inline-flex;
+  justify-self: start;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.segmented-option {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segmented-option[aria-checked='true'] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.segmented-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.upi-apps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.upi-app {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upi-app:hover,
+.upi-app[aria-pressed='true'] {
+  border-color: var(--brand);
+}
+
+.upi-app[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--brand) 14%, var(--surface-2));
+}
+
+.upi-app:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.upi-app-logo,
+.wallet-logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.upi-qr {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.upi-qr-code {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.fake-qr {
+  width: 100%;
+  border-radius: 10px;
+  fill: #111;
+  shape-rendering: crispEdges;
+}
+
+.fake-qr .fake-qr-bg {
+  fill: #fff;
+}
+
+.upi-qr-code.is-expired .fake-qr {
+  opacity: 0.15;
+}
+
+.upi-qr-code.is-expired .btn {
+  position: absolute;
+}
+
+.upi-qr-info {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.upi-qr-info p {
+  margin: 0;
+}
+
+.upi-qr-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-h);
+}
+
+.upi-qr-steps {
+  margin: 4px 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  display: grid;
+  gap: 2px;
+}
+
+.upi-qr-timer {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-h);
+}
+
+.upi-qr-timer.is-low {
+  color: var(--warning);
+}
+
+/* ---------- Wallet ---------- */
+.wallet-form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.wallet-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.wallet-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.wallet-option:hover,
+.wallet-option.is-selected {
+  border-color: var(--brand);
+}
+
+.wallet-option.is-selected {
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface-2));
+}
+
+.wallet-option:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wallet-option input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.wallet-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wallet-name {
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.wallet-balance {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.wallet-balance.is-low {
+  color: var(--warning);
+}
+
+/* ---------- Processing ---------- */
+.pay-processing {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.pay-processing .spinner {
+  margin-bottom: 10px;
+}
+
+.pay-processing h3 {
+  font-size: 1.15rem;
+}
+
+.pay-processing p {
+  margin: 0;
+  max-width: 380px;
+}
+
+.pay-processing .btn {
+  margin-top: 10px;
+}
+
+/* ---------- Test mode hint ---------- */
+.pay-test {
+  margin-top: 20px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px dashed var(--border);
+  font-size: 0.82rem;
+}
+
+.pay-test summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.pay-test ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+
+.pay-test code {
+  font-family: ui-monospace, Consolas, monospace;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+
+/* ---------- Order summary ---------- */
+.order-summary {
+  position: sticky;
+  top: 84px;
+  display: grid;
+  gap: 16px;
+}
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.order-head h2 {
+  font-size: 1.05rem;
+}
+
+.order-summary .summary-movie-info h3 {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+/* ---------- Success / failure ---------- */
+.pay-result {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 640px;
+  margin: 8px auto 0;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.pay-result.is-success {
+  background: linear-gradient(180deg, var(--success-soft), var(--surface) 45%);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.pay-result.is-failure {
+  background: linear-gradient(180deg, var(--danger-soft), var(--surface) 45%);
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.result-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 800;
+  animation: pop 0.4s cubic-bezier(0.2, 0.7, 0.2, 1.4);
+}
+
+.is-success .result-icon {
+  background: var(--success);
+  box-shadow: 0 0 0 8px var(--success-soft);
+}
+
+.is-failure .result-icon {
+  background: #ef4444;
+  box-shadow: 0 0 0 8px var(--danger-soft);
+}
+
+.pay-result h2 {
+  font-size: 1.6rem;
+}
+
+.pay-result h2:focus {
+  outline: none;
+}
+
+.result-lead {
+  margin: 0;
+  max-width: 460px;
+  color: var(--text);
+}
+
+.result-facts {
+  width: 100%;
+  display: grid;
+  gap: 0;
+  margin: 8px 0 0;
+  padding: 6px 16px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  text-align: left;
+}
+
+.result-facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  font-size: 0.88rem;
+}
+
+.result-facts div + div {
+  border-top: 1px solid var(--border);
+}
+
+.result-facts dt {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.result-facts dd {
+  margin: 0;
+  color: var(--text-h);
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.result-facts .is-mono {
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.result-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ---------- Motion & responsive ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .result-icon {
+    animation: none;
+  }
+
+  .card-preview,
+  .pay-method,
+  .wallet-option {
+    transition: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .pay-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Show what's being paid for above the form on narrow screens. */
+  .order-summary {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .pay-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pay-methods {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pay-method {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+
+  .pay-method-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .pay-panel,
+  .order-summary {
+    padding: 16px;
+  }
+
+  .pay-result {
+    padding: 24px 16px;
+  }
+
+  .pay-method-label {
+    font-size: 0.82rem;
+  }
+
+  .upi-qr {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .upi-qr-steps {
+    text-align: left;
+  }
+
+  .result-actions .btn {
+    flex: 1 1 100%;
+  }
+}

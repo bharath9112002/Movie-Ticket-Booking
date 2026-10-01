@@ -25,8 +25,9 @@ function generateBookingId(existing) {
  * - `requestId` makes the call idempotent: repeating it (double click, refresh,
  *   back button) returns the booking already made instead of a second one;
  * - seats already taken — by anyone — are rejected with a 409.
+ * `payment` is the receipt from paymentApi; only its label and transaction id are kept.
  */
-export const createBooking = ({ user, showId, seatIds, requestId }, { signal } = {}) =>
+export const createBooking = ({ user, showId, seatIds, requestId, payment }, { signal } = {}) =>
   respond(() => {
     const bookings = readBookings()
 
@@ -83,6 +84,9 @@ export const createBooking = ({ user, showId, seatIds, requestId }, { signal } =
       tickets: price.tickets,
       fee: price.fee,
       total: price.total,
+      payment: payment
+        ? { method: payment.method, label: payment.label, transactionId: payment.transactionId, paidAt: payment.paidAt }
+        : null,
     }
     writeBookings([...bookings, booking])
     return { booking, duplicate: false }

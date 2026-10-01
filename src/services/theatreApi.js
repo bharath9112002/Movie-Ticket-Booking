@@ -1,8 +1,3 @@
-// Offline mock API for theatres, screens and show timings.
-// Theatre brands and contact details are fictional; localities are real so maps make sense.
-// Show times are generated per theatre and date from a fixed seed, so they are stable
-// across reloads but always relative to today.
-
 import { getLocalBookedSeats } from '../utils/bookingStorage'
 import { popularMovies } from './mockMovieApi'
 import { MockApiError, paginate, respond, seededRandom } from './mockUtils'
@@ -261,7 +256,6 @@ export const getShowtimes = (id, dateKey, { signal } = {}) =>
     return [...groups.values()].sort((a, b) => b.movie.popularity - a.movie.popularity)
   }, signal)
 
-// ---------- Seat layouts ----------
 
 export const MAX_SEATS_PER_BOOKING = 10
 

@@ -1,7 +1,3 @@
-// Offline stand-in for the TMDB API, used when no TMDB key is configured.
-// Responses mirror TMDB's shapes so the UI doesn't care which source it talks to.
-// The catalogue is real films (see scripts/fetch-demo-movies.mjs); posters are bundled locally.
-
 import demoMovies from '../data/demoMovies.json'
 import { MockApiError, paginate as paginateList, respond } from './mockUtils'
 

@@ -1,4 +1,4 @@
-export default function TextInput({ id, label, error, ...props }) {
+export default function TextInput({ id, label, error, adornment, ...props }) {
   return (
     <div className="field">
       <label htmlFor={id}>{label}</label>
@@ -9,6 +9,7 @@ export default function TextInput({ id, label, error, ...props }) {
           aria-describedby={error ? `${id}-error` : undefined}
           {...props}
         />
+        {adornment}
       </div>
       {error && (
         <p className="error" id={`${id}-error`}>

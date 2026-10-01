@@ -2,6 +2,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import BookingSteps from '../components/booking/BookingSteps'
 import MovieStep from '../components/booking/MovieStep'
+import PaymentStep from '../components/booking/PaymentStep'
 import SeatStep from '../components/booking/SeatStep'
 import ShowStep from '../components/booking/ShowStep'
 import StepError from '../components/booking/StepError'
@@ -16,6 +17,7 @@ import './Theatres.css'
 import './SeatSelection.css'
 import './Movies.css'
 import './Booking.css'
+import './Payment.css'
 
 const STEP_COMPONENTS = {
   movie: MovieStep,
@@ -23,6 +25,7 @@ const STEP_COMPONENTS = {
   show: ShowStep,
   seats: SeatStep,
   summary: SummaryStep,
+  payment: PaymentStep,
 }
 
 // Chips summarising the choices so far; each links back to change it.
