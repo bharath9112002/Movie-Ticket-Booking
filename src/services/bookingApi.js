@@ -1,6 +1,7 @@
 // Mock booking API backed by localStorage (see utils/bookingStorage.js).
 
 import { readBookings, writeBookings } from '../utils/bookingStorage'
+import { refundQuote } from '../utils/bookingStatus'
 import { priceBreakdown } from '../utils/pricing'
 import { MockApiError, respond } from './mockUtils'
 import { MAX_SEATS_PER_BOOKING, loadShowSeats } from './theatreApi'
@@ -111,3 +112,30 @@ export const getMyBookings = (user, { signal } = {}) =>
 /** The user's existing confirmed bookings for a show (to warn before booking again). */
 export const findMyBookingsForShow = (user, showId) =>
   readBookings().filter((b) => b.userId === user.id && b.showId === showId && b.status === 'confirmed')
+
+/**
+ * Cancels one of the user's bookings, applying the refund policy in utils/bookingStatus.
+ * Cancelled seats are released (only confirmed bookings hold seats).
+ */
+export const cancelBooking = ({ bookingId, user, reason }, { signal } = {}) =>
+  respond(() => {
+    const bookings = readBookings()
+    const booking = bookings.find((b) => b.id === bookingId && b.userId === user.id)
+    if (!booking) throw new MockApiError('We could not find this booking in your account.', 404)
+
+    const quote = refundQuote(booking, Date.now())
+    if (!quote.allowed) throw new MockApiError(quote.reason, booking.status === 'cancelled' ? 409 : 400)
+
+    const cancelled = {
+      ...booking,
+      status: 'cancelled',
+      cancellation: {
+        cancelledAt: new Date().toISOString(),
+        reason,
+        refundPercent: quote.percent,
+        refund: quote.refund,
+      },
+    }
+    writeBookings(bookings.map((b) => (b.id === bookingId ? cancelled : b)))
+    return cancelled
+  }, signal)
